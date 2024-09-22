@@ -35,12 +35,12 @@ html, body {
     justify-content: center;
 }
 
-#sidebar .actions {
+#actions {
     display: flex;
     flex-direction: column;
 }
 
-#sidebar .actions button {
+#actions button {
     padding: 10px 16px;
     background-color: transparent;
     color: var(--primary-color);
@@ -55,7 +55,7 @@ html, body {
     transition: background-color 0.3s ease;
 }
 
-#sidebar .actions button:hover {
+#actions button:hover {
     background-color: rgba(74, 144, 226, 0.1); /* var(--primary-color) with 10% opacity */
 }
 
