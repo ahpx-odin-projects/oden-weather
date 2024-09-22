@@ -5,11 +5,13 @@ export default function register() {
 
 function addLocation(){
     let locationList = document.querySelector('#location-list')
+    let input = document.querySelector('#add-location-input')
+
     let button = document.querySelector('#add-location-button')
-    let i = 0
+
 
     button.addEventListener('click', () => {
-        const newButton = getButton(`City ${i++}`, 'location')
+        const newButton = getButton(`${input.value}`, 'location')
         locationList.appendChild(newButton)
     })
 }
