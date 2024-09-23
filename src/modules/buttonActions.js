@@ -11,6 +11,9 @@ function addLocation(){
 
 
     button.addEventListener('click', () => {
+        if (!input.value) {
+            return
+        }
         const newButton = getButton(`${input.value}`, 'location')
         locationList.appendChild(newButton)
     })
