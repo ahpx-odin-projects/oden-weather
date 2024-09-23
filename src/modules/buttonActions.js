@@ -4,18 +4,11 @@ export default function register() {
 
 
 function addLocation(){
-    let locationList = document.querySelector('#location-list')
     let input = document.querySelector('#add-location-input')
-
     let button = document.querySelector('#add-location-button')
 
-
     button.addEventListener('click', () => {
-        if (!input.value) {
-            return
-        }
-        const newButton = getButton(`${input.value}`, 'location')
-        locationList.appendChild(newButton)
+        getLocation(input.value)
     })
 }
 
@@ -25,4 +18,16 @@ function getButton(content, ...classes) {
     newLocation.classList.add(...classes)
     
     return newLocation
+}
+
+function getLocation(location) {
+    if (!location) {
+        return
+    }
+    let locationList = document.querySelector('#location-list')
+    if ([...locationList.children].some(i => i.innerText === location)) {
+        return
+    }
+    const newButton = getButton(`${location}`, 'location')
+    locationList.appendChild(newButton)
 }
