@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
-* {
+button {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -26,12 +26,18 @@ html, body {
     display: grid;
     height: 100%;
     width: 100%;
-    grid-template-columns: 3fr 7fr;
+    grid-template-columns: minmax(3fr, 400px) 7fr;
     grid-template-rows: 1fr;
 }
 
 #sidebar {
     background-color: var(--background-color);
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+
+    height: 100%;
 }
 
 #sidebar ul {
@@ -51,7 +57,7 @@ html, body {
     margin: 10px;
     padding: 12px;
     border: 2px solid var(--primary-color);
-    border-radius: 4px;
+    border-radius: 10px;
     font-size: 14px;
     color: var(--text-color);
     background-color: var(--background-color);
@@ -73,7 +79,7 @@ html, body {
     background-color: transparent;
     color: var(--primary-color);
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     margin: 5px 10px;
     font-size: 14px;
     font-weight: 500;
@@ -111,4 +117,70 @@ html, body {
 #sidebar .location:active {
     transform: translateY(1px);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#content {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr 1fr;
+    
+    width: auto;
+    height: 100%;
+
+    overflow: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#content > *:first-child {
+    grid-column: 1 / span 2;
+}
+
+#content .weather-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 10px;
+    transition: all 0.3s ease;
+}
+
+#content .weather-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+#content .weather-card h2 {
+    margin-top: 0;
+    color: var(--primary-color);
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+#content .weather-card ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#content .weather-card ul li {
+    display: flex;
+    justify-content: space-between;
+}
+
+#content .weather-card ul li span {
+    margin-right: 10px;
+}
+
+#weather-wind-pressure-humidity {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+#weather-outdoor {
+    
 }
