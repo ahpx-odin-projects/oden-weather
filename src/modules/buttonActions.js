@@ -7,8 +7,17 @@ function addLocation(){
     let input = document.querySelector('#add-location-input')
     let button = document.querySelector('#add-location-button')
 
-    button.addEventListener('click', () => {
+    function addNewLocation() {
         getLocation(input.value)
+        input.value = ''
+    }
+
+    button.addEventListener('click', addNewLocation)
+
+    input.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            addNewLocation()
+        }
     })
 }
 

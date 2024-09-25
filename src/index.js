@@ -4,10 +4,43 @@ import { getTemperatureDescription, getUVIndexDescription } from "./services/mea
 
 register()
 
+//set default value
 let weather = await getWeather('Beijing')
 setWeather(weather)
 
+// Add click event listeners to all location buttons
+document.querySelectorAll('#location-list .location').forEach(button => {
+    button.addEventListener('click', async () => {
+        const location = button.innerText;
+        const weatherData = await getWeather(location);
+        setWeather(weatherData);
+    });
+});
+
+// Add a mutation observer to handle dynamically added buttons
+const locationList = document.querySelector('#location-list');
+const observer = new MutationObserver(mutations => {
+    mutations.forEach(mutation => {
+        if (mutation.type === 'childList') {
+            mutation.addedNodes.forEach(node => {
+                if (node.nodeType === Node.ELEMENT_NODE && node.classList.contains('location')) {
+                    node.addEventListener('click', async () => {
+                        const location = node.innerText;
+                        const weatherData = await getWeather(location);
+                        setWeather(weatherData);
+                    });
+                }
+            });
+        }
+    });
+});
+
+observer.observe(locationList, { childList: true });
+
+
 function setWeather(weather) {
+    const title = `${weather.address} - Weather Forecast`;
+    document.title = title;
     setValue('weather-summary-temprature-value', weather.days[0].temp);
     setValue('weather-summary-condition-value', weather.days[0].conditions);
     setValue('weather-summary-description-value', weather.description);

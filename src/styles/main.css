@@ -127,7 +127,7 @@ html, body {
 
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto 1fr 1fr;
+    grid-template-rows: auto 3fr 1fr 1fr;
     
     width: auto;
     height: 100%;
@@ -179,4 +179,57 @@ html, body {
 #weather-wind-pressure-humidity {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
+}
+
+#weather-hourly {
+    grid-row: span 3;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+#weather-hourly h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+}
+
+#weather-hourly ul {
+    overflow-y: auto;
+    width: 100%;
+    height: calc(100% - 60px); /* Subtracting the approximate height of the h2 element */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#weather-hourly li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+#weather-hourly .weather-hourly-hour-value {
+    font-weight: bold;
+    min-width: 70px;
+}
+
+#weather-hourly .weather-hourly-temperature-value {
+    font-size: 1.2em;
+    color: var(--primary-color);
+    min-width: 50px;
+    text-align: center;
+}
+
+#weather-hourly .weather-hourly-condition-value {
+    font-style: italic;
+    color: #666;
+    flex-grow: 1;
+    text-align: right;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
 }
