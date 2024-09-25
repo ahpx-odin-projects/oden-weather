@@ -28,7 +28,7 @@ export default {
         },
       },
       {
-        test: /\.css$/,
+        test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
@@ -41,6 +41,7 @@ export default {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.html',
+      inject: 'body'
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',

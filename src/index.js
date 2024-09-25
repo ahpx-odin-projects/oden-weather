@@ -1,6 +1,7 @@
 import register from "./modules/buttonActions.js";
 import { getWeather, getWindDirection } from "./services/weatherService.js";
 import { getTemperatureDescription, getUVIndexDescription } from "./services/measurementService.js";
+import './styles/main.css';
 
 register()
 
